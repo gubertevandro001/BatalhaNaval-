@@ -14,7 +14,7 @@ for i in range(0, 10):
 
 
 def mostrar_tabuleiro(): #Tabuleiro ficou extenso, pois não consegui fazer ele ficar elegante e do jeito certo com um código menor.
-    print('\033[34m    ============== Batalha Naval =================\033[m\n')
+    print('\033[34m================= Batalha Naval =================\033[m\n')
     print(f'\033[1;97mSeus Pontos: {pontos}\033[m')
     print(f'\033[1;97mPontos do Computador: {cpu_pontos}\033[m\n')
     print('\033[1;33m    0    1    2    3    4    5    6    7    8    9\033[m')
