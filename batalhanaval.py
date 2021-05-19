@@ -118,7 +118,7 @@ def mensagem_inicio_ataques():
 
 
 def ataques(tabuleiro): #Também realizei várias repetições indicando erros na hora dos ataques
-    lista_ataques_cpu = [] #Lista para armazenar os ataques do pc
+    lista_ataques_cpu = []#Lista para armazenar os ataques do pc
     lista_ataques_humano = [] #Lista para armazenas os ataques do humano
     while True:
         try:
@@ -148,44 +148,44 @@ def ataques(tabuleiro): #Também realizei várias repetições indicando erros n
                         tabuleiro[humano_ataque_linha][humano_ataque_coluna] = '\033[92m*\033[m'
                         mostrar_tabuleiro()
 
-                if [humano_ataque_linha, humano_ataque_coluna] in listapc: #Verifica na lista_pc se a posição informada corresponde a um barco do computador, caso seja, afunda o barco do pc
-                    tabuleiro[humano_ataque_linha][humano_ataque_coluna] = '\033[92m⚓\033[0m'
-                    global pontos
-                    pontos += 1
-                    mostrar_tabuleiro()
-                    print(f'\033[1;34m{"-" * 42}\nParabéns Você Afundou um Navio Adversário!\n{"-" * 42}\n\033[m')
-                    if pontos == 5:
-                        print('\033[1;34mPARABÉNS HUMANO, VOCÊ VENCEU O COMPUTADOR!!!\033[m')
-                        break
-                else:
-                    tabuleiro[humano_ataque_linha][humano_ataque_coluna] = '\033[92m*\033[m' #Caso posição informada não corresponda a nenhum barco do pc, o humano erra o tiro
-                    print('\033[1;93m------------------\nVocê Errou o Tiro!\n------------------\033[m')
-        except ValueError:
-            print('\033[1;97mInforme Somente Números! Tente Novamente\033[m')
-            return ataques(tabuleiro)
+                    if [humano_ataque_linha, humano_ataque_coluna] in listapc: #Verifica na lista_pc se a posição informada corresponde a um barco do computador, caso seja, afunda o barco do pc
+                        tabuleiro[humano_ataque_linha][humano_ataque_coluna] = '\033[92m⚓\033[0m'
+                        global pontos
+                        pontos += 1
+                        mostrar_tabuleiro()
+                        print(f'\033[1;34m{"-" * 42}\nParabéns Você Afundou um Navio Adversário!\n{"-" * 42}\n\033[m')
+                        if pontos == 5:
+                            print('\033[1;34mPARABÉNS HUMANO, VOCÊ VENCEU O COMPUTADOR!!!\033[m')
+                            break
+                    else:
+                        tabuleiro[humano_ataque_linha][humano_ataque_coluna] = '\033[92m*\033[m' #Caso posição informada não corresponda a nenhum barco do pc, o humano erra o tiro
+                        print('\033[1;93m------------------\nVocê Errou o Tiro!\n------------------\033[m')
 
-        #Ataques do PC
-
-        cpu_ataque_linha = random.randint(0, 4)
-        cpu_ataque_coluna = random.randint(0, 9)
-        while [cpu_ataque_linha, cpu_ataque_coluna] in lista_ataques_cpu: #Verifica se a jogada do computador já está ocupada ou repetida, caso esteja, ele gera novamente
             cpu_ataque_linha = random.randint(0, 4)
             cpu_ataque_coluna = random.randint(0, 9)
-        else:
-            lista_ataques_cpu.append([cpu_ataque_linha, cpu_ataque_coluna]) #Guarda os ataques do pc caso não repetido
-        if [cpu_ataque_linha, cpu_ataque_coluna] in lista: #Verifica na lista se a posição corresponde a um barco do humano, caso seja, afunda o barco dele
-            tabuleiro[cpu_ataque_linha][cpu_ataque_coluna] = '\033[93m⚓\033[0m'
-            global cpu_pontos
-            cpu_pontos += 1
-            mostrar_tabuleiro()
-            print(f'\033[1;37m{"-" * 31}\nUm de Seus Navios Foi Afundado!\033[m\n{"-" * 31}')
-            if cpu_pontos == 5:
-                print('\033[1;34mO COMPUTADOR VENCEU!!!\033[m')
-                break
-        else:
-            tabuleiro[cpu_ataque_linha][cpu_ataque_coluna] = '\033[93m*\033[m' #Caso posição informada não corresponda a nenhum barco do humano, o pc erra o tiro
-            mostrar_tabuleiro()
-            print('\033[1;37m--------------------\nO PC Errou o Tiro!\n--------------------\033[m')
+            while [cpu_ataque_linha,
+                cpu_ataque_coluna] in lista_ataques_cpu:  # Verifica se a jogada do computador já está ocupada ou repetida, caso esteja, ele gera novamente
+                cpu_ataque_linha = random.randint(0, 4)
+                cpu_ataque_coluna = random.randint(0, 9)
+            else:
+                lista_ataques_cpu.append(
+                [cpu_ataque_linha, cpu_ataque_coluna])  # Guarda os ataques do pc caso não repetido
+            if [cpu_ataque_linha, cpu_ataque_coluna] in lista:  # Verifica na lista se a posição corresponde a um barco do humano, caso seja, afunda o barco dele
+                tabuleiro[cpu_ataque_linha][cpu_ataque_coluna] = '\033[93m⚓\033[0m'
+                global cpu_pontos
+                cpu_pontos += 1
+                mostrar_tabuleiro()
+                print(f'\033[1;37m{"-" * 31}\nUm de Seus Navios Foi Afundado!\033[m\n{"-" * 31}')
+                if cpu_pontos == 5:
+                    print('\033[1;34mO COMPUTADOR VENCEU!!!\033[m')
+                    break
+            else:
+                tabuleiro[cpu_ataque_linha][
+                cpu_ataque_coluna] = '\033[93m*\033[m'  # Caso posição informada não corresponda a nenhum barco do humano, o pc erra o tiro
+                mostrar_tabuleiro()
+                print('\033[1;37m--------------------\nO PC Errou o Tiro!\n--------------------\033[m')
+        except ValueError:
+            print('\033[1;97mInforme Somente Números! Tente Novamente\033[m')
 
 
 mostrar_tabuleiro()
@@ -193,3 +193,4 @@ humano_jogadas()
 cpu_jogadas()
 mensagem_inicio_ataques()
 ataques(tabuleiro)
+
